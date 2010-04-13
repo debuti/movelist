@@ -1,0 +1,27 @@
+Description_
+
+
+Requirements_
+ Debe notificar cuando se excedan los limites o esten cerca de acabarse
+ La tarea principal debe corre en underground e inicializarse al inicio
+ Debe contar todo tipo de datos (call, sms, wifi, cell)
+ Debe poderse definir un reset del contador
+ Debe guardar los datos por numero de telefono en una base de datos, ya que si se borra el log de llamadas los datos persistan
+ Debe tener publicidad
+ Debe poder configurarse por planes como el callmeterNG
+ Debe ser compatible i18n (http://developer.android.com/resources/tutorials/localization/index.html)
+ 
+ Opcional
+  Estimar facturacion cuando te pasas
+  Debe avisar si estoy llamando y se acaba de pasar el limite
+  Debe tener barra de progreso
+  Debe sacar estadisticas de uso por dias, meses, etc
+  Debe poder quitar numeros del conteo (por regexp)
+  Debe tener un widget de escritorio indicando el numero restante
+
+
+Enlaces utiles:
+
+Crear una interfaz android (http://developerlife.com/tutorials/?p=289) y los siguientes!
+
+http://androidenea.blogspot.com/2009/09/starting-android-service-after-boot.html
