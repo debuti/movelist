@@ -41,6 +41,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.wifi.WifiManager;
 import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -113,7 +114,11 @@ public class NetCounterService extends WakefulService {
 			registerAlarm();
 		}
 
-		Handler handler = mApp.getAdapter(HandlerContainer.class).getSlowHandler();
+		HandlerThread looper = new HandlerThread("NetCounter Handler");
+		looper.start();
+		Handler handler = new Handler(looper.getLooper());
+		mHandlerContainer = new HandlerContainer(new Handler(), handler);
+		Handler handler = mHandlerContainer.getSlowHandler();
 		handler.removeCallbacks(mUpdateRunnable);
 		handler.post(mUpdateRunnable);
 

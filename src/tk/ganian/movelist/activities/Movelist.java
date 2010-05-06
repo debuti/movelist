@@ -1,19 +1,20 @@
-package tk.ganian.keepitinbounds.activities;
+package tk.ganian.movelist.activities;
 
-import tk.ganian.keepitinbounds.R;
-import tk.ganian.keepitinbounds.services.KeepItInboundsService;
+import tk.ganian.movelist.R;
+import tk.ganian.movelist.services.MovelistService;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class KeepItInbounds extends Activity {
+public class Movelist extends Activity {
 	
 	/** Called when the activity is first created. */
 	public void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class KeepItInbounds extends Activity {
 		case R.id.preferences:
 			this
 					.startActivity(new Intent(this,
-							KeepItInboundsPreferences.class));
+							MovelistPreferences.class));
 			return true;
 		case R.id.about:
 			Dialog d = new Dialog(this);
@@ -59,25 +60,18 @@ public class KeepItInbounds extends Activity {
 	public void onResume() {
 		super.onResume();
 		TextView t = new TextView(getApplicationContext());
+	    MovelistService.preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 		t = (TextView) findViewById(R.id.TextView01);
-		t.setText(KeepItInboundsService.getCurrentImei());
+		t.setText((String)MovelistService.preferences.getString("prueba2", "defvalue"));
 
 		t = (TextView) findViewById(R.id.TextView02);
-		t
-				.setText(String.valueOf(KeepItInboundsService
-						.getMinutesConsumed())
-						+ "/"
-						+ String.valueOf(KeepItInboundsService
-								.getMinutesLimit()));
-
 		t = (TextView) findViewById(R.id.TextView03);
-		t.setText(String.valueOf(KeepItInboundsService.getBytes3GConsumed()));
 
 		t = (TextView) findViewById(R.id.TextView04);
-	//	t.setText(KeepItInboundsService.preferences.getString("prueba", "defvalue"));
+	//	t.setText(MovelistService.preferences.getString("prueba", "defvalue"));
 		
-		Log.i("TODO", "hola");
+		Log.i(this.toString(), "hola");
 
 	}
 
@@ -86,7 +80,7 @@ public class KeepItInbounds extends Activity {
 	 */
 	public void onPause() {
 		super.onPause();
-		SharedPreferences.Editor ed = KeepItInboundsService.preferences.edit();
+		SharedPreferences.Editor ed = MovelistService.preferences.edit();
       //  ed.putString("prueba", mCurViewMode);
         ed.commit();
 	}

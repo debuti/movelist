@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2009 Cyril Jaquier
  *
- * This file is part of NetCounter.
+ * This file is part of Movelist.
  * 
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,11 +17,14 @@
  * along with this program; If not, see <http://www.gnu.org/licenses/>.
  */
 
-package tk.ganian.keepitinbounds.services;
+package tk.ganian.movelist.services;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.SystemClock;
 
 /**
  * Broadcast receiver that get launched after boot up. It delays the initial
@@ -29,12 +32,19 @@ import android.content.Intent;
  */
 public class OnBootReceiver extends BroadcastReceiver {
 
-	//TODO Replace the services system with a alarm-driven system
+	private static final long DELAY = 2 * 60 * 1000;
+
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		context.startService(new Intent(context, KeepItInboundsService.class));
+		AlarmManager mgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+
+		Intent i = new Intent(context, OnAlarmReceiver.class);
+		PendingIntent pi = PendingIntent.getBroadcast(context, 0, i, 0);
+
+		// Delays the initial start of the service as we don't need to start
+		// right after boot.
+		long t = SystemClock.elapsedRealtime() + DELAY;
+		mgr.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, t, pi);
 	}
+
 }
-
-
-//http://kfb-android.blogspot.com/2009/04/registering-for-timetick-after-reboot.html

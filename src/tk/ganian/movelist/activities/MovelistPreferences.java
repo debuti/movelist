@@ -1,12 +1,12 @@
-package tk.ganian.keepitinbounds.activities;
+package tk.ganian.movelist.activities;
 
-import tk.ganian.keepitinbounds.R;
-import tk.ganian.keepitinbounds.services.KeepItInboundsService;
+import tk.ganian.movelist.R;
+import tk.ganian.movelist.services.MovelistService;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 
-public class KeepItInboundsPreferences extends PreferenceActivity implements
+public class MovelistPreferences extends PreferenceActivity implements
 SharedPreferences.OnSharedPreferenceChangeListener{
 
 	
@@ -17,7 +17,7 @@ SharedPreferences.OnSharedPreferenceChangeListener{
 	public final void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.addPreferencesFromResource(R.xml.preferences);
-		KeepItInboundsService.preferences
+		MovelistService.preferences
 				.registerOnSharedPreferenceChangeListener(this);
 
 	}
