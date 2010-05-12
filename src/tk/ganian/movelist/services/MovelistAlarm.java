@@ -43,8 +43,10 @@ public class MovelistAlarm {
 		LOW, HIGH
 	}
 
-	private static final long INTER_ACTIVE = 30 * 1000;
+	//30 seconds
+	private static final long INTER_ACTIVE = 30 * 1000; 
 
+	//An hour
 	private static final long INTER_STANDBY = 60 * 60 * 1000;
 
 	private State mCurrentState = null;

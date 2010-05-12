@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Move list</string>
-    <string name="shared_preferences">movelistPreferences</string>
-    <string name="app_version">0.0.2</string>
+	<string name="app_name">Move list</string>
+	<string name="shared_preferences">movelistPreferences</string>
+	<string name="app_version">0.0.2</string>
 	<string name="author_">Author:</string>
 	<string name="about_">About</string>
 	<string name="version_">Version:</string>
 	<string name="license_">License:</string>
 	<string name="website_">Website:</string>
 	<string name="source_">Sources:</string>
-	<string name="author">Borja García &lt;debuti@gmail.com&gt; (Spanish)</string>
-	<string name="license">GPLv3 - see http://www.gnu.org/licenses/gpl-3.0.txt</string>
+	<string name="author">Borja García &lt;debuti@gmail.com&gt; (Spanish)
+	</string>
+	<string name="license">GPLv3 - see http://www.gnu.org/licenses/gpl-3.0.txt
+	</string>
 	<string name="website">http://code.google.com/p/movelist/</string>
 	<string name="source">http://code.google.com/p/movelist/</string>
 	<string name="about">Move things</string>
+	<string name="no_actions">No actions defined</string>
+	<string name="menu_insert">Add Item</string>
 </resources>
